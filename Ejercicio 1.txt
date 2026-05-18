@@ -1,0 +1,35 @@
+public class Main
+{
+    public static boolean Ordenado(int[] arreglo, int indice){
+    if (indice == arreglo.length - 1 || arreglo.length<=1) {
+            return true;
+        }
+
+        if (arreglo[indice] > arreglo[indice + 1]) {
+            return false;
+        }
+
+        return Ordenado(arreglo, indice + 1);
+    }
+    
+	public static void main(String[] args) {
+		int[] arreglo1 = {1,2,3,5,8};
+		int[] arreglo2 = {1,4,2,8};
+		int[] arreglo3 = {};
+		System.out.print("¿arreglo 1 Esta ordenado?  ");
+		System.out.println(Ordenado(arreglo1,0));
+		System.out.print("¿arreglo 2 Esta ordenado?  ");
+		System.out.println(Ordenado(arreglo2,0));
+		System.out.print("¿arreglo 3 Esta ordenado?  ");
+		System.out.println(Ordenado(arreglo3,0));
+/*
+for (int i=0;i<arreglo.length - 1;i++ ){
+		    if(arreglo[i]>arreglo[i + 1]){
+		        
+		        return false;
+		    }
+		}
+		return true;
+*/
+	}
+}
