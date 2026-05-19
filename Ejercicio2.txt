@@ -1,0 +1,42 @@
+public class Main
+{
+    public static int[] SegundoMayor(int[] arreglo, int izq, int der){
+        if (izq == der|| izq>der) {
+            return new int[] {0,arreglo[izq]};
+        }
+        if(izq + 1== der ){
+            if(arreglo[izq]>arreglo[der]){
+                return new int[] {arreglo[der],arreglo[izq]};
+            }else{
+                return new int[] {arreglo[izq],arreglo[der]};
+            }
+        }
+        int mitad = izq + (der - izq) / 2;
+        //System.out.println(izq+"-"+mitad +"-"+der);
+        
+        int[] izqMayores = SegundoMayor(arreglo, izq, mitad);
+        int[] derMayores = SegundoMayor(arreglo, mitad + 1, der);
+        int mayor;
+        int segundomayor;
+        if (izqMayores[1] > derMayores[1]) {
+            mayor = izqMayores[1];
+            if(izqMayores[0]>derMayores[1]){
+                segundomayor = izqMayores[0];
+            }else{
+                segundomayor = derMayores[1];
+            }
+        } else {
+            mayor = derMayores[1];
+            if(derMayores[0]>izqMayores[1]){
+                segundomayor = derMayores[0];
+            }else{
+                segundomayor = izqMayores[1];
+            }
+        }
+        return new int[] {segundomayor,mayor};
+    }
+	public static void main(String[] args) {
+	    int[] arreglo = {8,3,10,5,7};
+		System.out.println("El segundo Mayor es: "+SegundoMayor(arreglo,0,4)[0]);
+	}
+}
